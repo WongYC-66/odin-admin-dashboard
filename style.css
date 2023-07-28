@@ -2,8 +2,9 @@
 
 :root {
     --blue: #bae6fd;
+    --darkblue: #2563eb;
     --white: #eff6ff;
-    --amber: #d97706;
+    --amber: #facc15;
     --grey: #cbd5e1;
     /* color source :  https://tailwindcss.com/docs/customizing-colors */
     font-size: 16px;
@@ -20,16 +21,16 @@ body {
     background-color: var(--grey);
 }
 
-.container>div,
+/* .container>div,
 .project-card,
-.annoucements,
+.announcements,
 .trendings {
     border: 1px solid black;
-}
+} */
 
-.annoucements,
+.announcements,
 .trendings {
-    background-color: var(--blue);
+    background-color: var(--white);
 }
 
 .sidebar {
@@ -38,17 +39,32 @@ body {
 
 .header,
 .project-card,
-.annouce-card,
+.announce-card,
 .trend-card {
     background-color: var(--white);
 }
 
-.sidebar{
+.sidebar {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: black;
+}
+
+.logo {
+    font-size: 2rem;
     font-weight: 600;
 }
-.logo{
-    font-size: 1.5rem;
-    font-weight: 600;
+
+.logo p:hover{
+    cursor: pointer;
+}
+.sidebar-main p:hover,
+.sidebar-extra p:hover{
+    background-color: var(--darkblue);
+    color: var(--white);
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 14px 0.5px rgba(0, 0, 0, 0.33);
 }
 
 img.logo {
@@ -62,37 +78,96 @@ img.icon {
 }
 
 img.user-icon,
-img.user-icon-big{
+img.user-icon-big {
     border-radius: 100px;
     aspect-ratio: 1 / 1;
 }
+
 img.user-icon {
     width: 50px;
 }
-img.user-icon-big{
+
+img.user-icon-big {
     width: 70px;
 }
-.searchCell input{
-    width : 90%;
+
+img.icon:hover,
+img.user-icon:hover,
+img.user-icon-big:hover{
+    cursor: pointer;
+    transform: translateY(-3px);
+}
+
+.header{
+    box-shadow: 5px 5px 14px 0.5px rgba(0, 0, 0, 0.33);
+}
+.searchCell input {
+    width: 90%;
     background-color: var(--grey);
     border: 0;
     border-radius: 25px;
+    padding: 5px 20px;
 }
-.notificationCell p{
+
+.notificationCell p {
     font-weight: 600;
     font-size: 1.25rem;
 }
-.welcomeCell{
+
+.welcomeCell {
     font-weight: 600;
 }
 
-.actionCell button{
+.actionCell button {
     padding: 15px 50px;
     background-color: var(--blue);
     border: none;
     border-radius: 100px;
 }
+.actionCell button:hover{
+    background-color: var(--darkblue);
+    color: var(--white);
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 14px 0.5px rgba(0, 0, 0, 0.33);
+}
 
+.main-content h2{
+    padding-bottom: 10px;
+}
+.project-card {
+    border-radius: 15px;
+    box-shadow: 0px 5px 14px 3px rgba(0, 0, 0, 0.33);
+    border-left: 10px solid var(--amber);
+}
+.project-card:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+}
+.project-card h4{
+    font-size: 1.3rem;
+}
+.project-card p:first-of-type{
+    opacity: 0.7;
+}
+.announce-card h5{
+    font-size: 1.1rem;
+    padding: 5px 0;
+}
+.announce-card p, .announce-card hr{
+    opacity: 0.7;
+}
+.announcements, .trendings{
+    border-radius: 10px;
+    box-shadow: 0px 5px 14px 3px rgba(0, 0, 0, 0.33);
+}
+.trend-card p:last-of-type{
+    opacity: 0.5;
+}
+.announce-card:hover,
+.trend-card:hover{
+    cursor: pointer;
+}
 /* main grid */
 .container {
     display: grid;
@@ -105,8 +180,6 @@ img.user-icon-big{
 .sidebar {
     grid-area: 1 / 1 / -1 / 2;
     padding: 20px;
-    background-color: var(--blue);
-    color: black;
 
     /*  */
     display: grid;
@@ -128,15 +201,15 @@ img.user-icon-big{
     grid-template-columns: 2.5fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 15px;
-    padding: 15px;
-    align-items: stretch;
+    padding: 40px;
+
 }
 
 .main-content .projects {
-    grid-area: 1 / 1 / 3 / 2;
+    grid-area: 1 / 1 / -1 / 2;
     /*  */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 10px;
 }
 
@@ -148,6 +221,20 @@ img.user-icon-big{
     justify-items: stretch;
     align-items: stretch;
     gap: 20px;
+}
+
+/* sub-grid projects */
+
+.projects .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    padding: 30px;
+}
+.project-card p:last-child {
+    display: flex;
+    justify-content: end;
+    gap: 15px;
 }
 
 /* sub-grid side-bar */
@@ -174,13 +261,14 @@ img.user-icon-big{
     align-items: center;
     align-content: center;
 }
-.header-row1 .searchCell p{
+
+.header-row1 .searchCell p {
     display: flex;
     justify-content: space-between;
 }
 
 .header-row1 .notificationCell {
-    justify-self: end ;
+    justify-self: end;
     /*  */
     display: grid;
     grid-template-columns: 1fr 1fr 4fr;
@@ -199,7 +287,7 @@ img.user-icon-big{
 .header-row2 .welcomeCell {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 1.5fr; 
+    grid-template-rows: 1fr 1.5fr;
     align-items: center;
 }
 
@@ -226,7 +314,28 @@ img.user-icon-big{
 }
 
 /* sub-grid side-panel */
-.side-panel .annoucements,
-.side-panel .trendings {
-    height: 50%;
+.side-panel .announcement-panel,
+.side-panel .trending-panel{
+    display: flex;
+    flex-direction: column;
+}
+.announcement-panel .announcements,
+.trending-panel .trendings {
+    padding: 30px;
+    flex: 1;
+    /*  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+.trendings .trend-card{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1.5fr;
+    align-items: center;
+    align-content:center ;
+}
+.trend-card img{
+    grid-area: 1 / 1 / -1 / 2;
 }
