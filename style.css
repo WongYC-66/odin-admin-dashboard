@@ -4,6 +4,7 @@
     --blue: #bae6fd;
     --white: #eff6ff;
     --amber: #d97706;
+    --grey: #cbd5e1;
     /* color source :  https://tailwindcss.com/docs/customizing-colors */
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -16,7 +17,7 @@
 }
 
 body {
-    background-color: lightgray;
+    background-color: var(--grey);
 }
 
 .container>div,
@@ -28,18 +29,18 @@ body {
 
 .annoucements,
 .trendings {
-    background-color: white;
+    background-color: var(--blue);
 }
 
 .sidebar {
-    background-color: lightblue;
+    background-color: var(--blue);
 }
 
 .header,
 .project-card,
 .annouce-card,
 .trend-card {
-    background-color: white;
+    background-color: var(--white);
 }
 
 .sidebar{
@@ -60,11 +61,43 @@ img.icon {
     height: 25px;
 }
 
+img.user-icon,
+img.user-icon-big{
+    border-radius: 100px;
+    aspect-ratio: 1 / 1;
+}
+img.user-icon {
+    width: 50px;
+}
+img.user-icon-big{
+    width: 70px;
+}
+.searchCell input{
+    width : 90%;
+    background-color: var(--grey);
+    border: 0;
+    border-radius: 25px;
+}
+.notificationCell p{
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+.welcomeCell{
+    font-weight: 600;
+}
+
+.actionCell button{
+    padding: 15px 50px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 100px;
+}
+
 /* main grid */
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-rows: 1fr 2.5fr 2.5fr;
     height: 100vh;
     width: 100vw;
 }
@@ -132,19 +165,28 @@ img.icon {
 
 /* sub-grid header */
 .header {
-    padding: 20px;
+    padding: 10px 30px;
 }
 
 .header .header-row1 {
     display: grid;
     grid-template-columns: 6fr 4fr;
     align-items: center;
+    align-content: center;
+}
+.header-row1 .searchCell p{
+    display: flex;
+    justify-content: space-between;
 }
 
 .header-row1 .notificationCell {
+    justify-self: end ;
+    /*  */
     display: grid;
     grid-template-columns: 1fr 1fr 4fr;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 
 .header .header-row2 {
@@ -157,7 +199,8 @@ img.icon {
 .header-row2 .welcomeCell {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1.5fr; 
+    align-items: center;
 }
 
 .welcomeCell img {
@@ -166,14 +209,20 @@ img.icon {
 
 .welcomeCell p {
     grid-area: 1 / 2 / 2 / 2;
+    align-self: end;
 }
 
 .welcomeCell h1 {
     grid-area: 2 / 2 / 3 / 3;
+    align-self: start;
 }
 
 .header-row2 .actionCell {
     justify-self: right;
+    /*  */
+    display: flex;
+    gap: 2vw;
+    justify-content: space-around;
 }
 
 /* sub-grid side-panel */
